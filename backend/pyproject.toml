@@ -1,0 +1,79 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kotovn"
+version = "0.1.0"
+description = "Local-first, zero-friction Visual Novel translator powered by quantized LLMs, lightweight vision, and online RAG."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "KotoVN Contributors" }]
+keywords = ["visual-novel", "llm", "quantization", "rag", "ocr", "vlm", "translation"]
+dependencies = [
+    "pydantic>=2.7.0",
+    "PyYAML>=6.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=1.11.0",
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=5.0.0",
+    "ruff>=0.7.0",
+    "types-PyYAML>=6.0.12",
+]
+server = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+]
+local-llm = [
+    "llama-cpp-python>=0.3.0",
+]
+vision = [
+    "numpy>=1.26.0",
+    "pillow>=10.4.0",
+]
+
+[project.scripts]
+kotovn = "kotovn.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/kotovn"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+    "SIM", # flake8-simplify
+    "RUF", # ruff-specific rules
+]
+ignore = [
+    "RUF001", # allow full-width Japanese/Chinese punctuation in VN test samples
+    "RUF002",
+    "RUF003",
+]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_configs = true
+mypy_path = "src"
+packages = ["kotovn"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "-q"

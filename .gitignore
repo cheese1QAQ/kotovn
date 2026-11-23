@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+dist/
+build/
+*.egg-info/
+
+# Frontend / Desktop
+desktop/node_modules/
+desktop/dist/
+desktop/src-tauri/target/
+
+# Local runtime workspaces & model weights (NEVER commit multi-GB weights!)
+data/
+models/
+*.gguf
+*.bin
+*.safetensors
+*.onnx
+*.dat
+
+# OS & Editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

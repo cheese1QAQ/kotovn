@@ -1,0 +1,110 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend (${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install Python ${{ matrix.python-version }} and dependencies
+        run: |
+          uv python install ${{ matrix.python-version }}
+          uv sync --python ${{ matrix.python-version }} --extra dev
+
+      - name: Lint & format check (ruff)
+        run: |
+          uv run ruff check src tests
+          uv run ruff format --check src tests
+
+      - name: Static type check (mypy --strict)
+        run: uv run mypy
+
+      - name: Run unit & integration tests (pytest)
+        run: uv run pytest --cov=kotovn --cov-report=xml --cov-report=term-missing
+
+      - name: CLI smoke check
+        run: |
+          uv run kotovn doctor
+          uv run kotovn demo
+
+  research:
+    name: Quantization & Research Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install backend dev environment
+        working-directory: backend
+        run: uv sync --extra dev
+
+      - name: Lint research scripts
+        working-directory: backend
+        run: |
+          uv run ruff check ../research
+          uv run ruff format --check ../research
+
+      - name: Syntax check Colab & benchmark scripts
+        run: |
+          python3 -m py_compile research/quantization/benchmark_runner.py research/quantization/colab_quantize_gguf_imatrix.py
+
+      - name: Validate eval dataset & dry-run benchmark harness
+        working-directory: backend
+        run: uv run python ../research/quantization/benchmark_runner.py --dry-run
+
+  desktop:
+    name: Desktop UI (TypeScript + Vite)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: desktop
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: desktop/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck & build frontend
+        run: npm run build

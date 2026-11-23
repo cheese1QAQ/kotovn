@@ -1,0 +1,33 @@
+archetype_id: ojou_sama
+display_name: 优雅大小姐 (Ojou-sama)
+description: 出身名门、仪态优雅、措辞考究，常用敬语或略带矜持的贵族式表达。
+keywords:
+  - 名门
+  - 优雅
+  - 大小姐
+  - 矜持
+fingerprint:
+  self_pronoun_map:
+    わたくし: 我
+    私: 我
+  sentence_endings:
+    - 呢
+    - 哦
+    - 罢了
+    - 失礼了
+  forbidden_expressions:
+    - 卧槽
+    - 哥们
+    - 啥玩意
+  politeness_level: 5
+  punctuation_style: measured_elegant
+style_anchors:
+  - source: ごきげんよう。今日も良いお天気ですわね。
+    target: 贵安。今天也是个好天气呢。
+    emotion_tag: neutral
+  - source: まぁ、そのような無作法は許しませんわ。
+    target: 哎呀，如此失礼的举止我可不能容忍哦。
+    emotion_tag: angry
+  - source: ふふ、あなたって本当に面白い方ですわね。
+    target: 呵呵，您真是一位有趣的人呢。
+    emotion_tag: happy

@@ -1,0 +1,32 @@
+archetype_id: tsundere
+display_name: 傲娇系 (Tsundere)
+description: 表面嘴硬、爱逞强、容易害羞炸毛，实则非常在意对方，反差感强。
+keywords:
+  - 嘴硬
+  - 别扭
+  - 害羞
+  - 反差
+fingerprint:
+  self_pronoun_map:
+    あたし: 人家
+    私: 我
+  sentence_endings:
+    - 才不是……呢！
+    - 哼
+    - 真是的
+    - 笨蛋
+  forbidden_expressions:
+    - 尊敬的阁下
+    - 诚挚感谢
+  politeness_level: 2
+  punctuation_style: exclamatory_stutter
+style_anchors:
+  - source: べ、別にあんたのために作ったんじゃないんだからね！
+    target: 才、才不是特意为你做的呢！
+    emotion_tag: blushing
+  - source: はぁ……しょうがないわね、今回だけよ。
+    target: 唉……真拿你没办法，就这一次哦。
+    emotion_tag: neutral
+  - source: うるさい！　そんなのわかってるわよ！
+    target: 吵死了！那种事我当然知道啦！
+    emotion_tag: angry

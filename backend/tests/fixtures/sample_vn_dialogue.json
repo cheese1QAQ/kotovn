@@ -1,0 +1,28 @@
+[
+  {
+    "frame_id": "sample-001",
+    "game_id": "sakura_demo",
+    "source_type": "ocr",
+    "speaker_raw": "千夏",
+    "raw_text": "桜ヶ丘学園の「星屑部」って、本当に活動してるの？",
+    "visual_context": {
+      "scene_tag": "classroom_sunset",
+      "speaker_emotion": "blushing",
+      "scene_changed": true,
+      "visual_tokens_used": 128
+    }
+  },
+  {
+    "frame_id": "sample-002",
+    "game_id": "sakura_demo",
+    "source_type": "vlm",
+    "speaker_raw": "千夏",
+    "raw_text": "べ、別にあんたと「星屑部」で放課後を過ごしたいわけじゃないんだからね！",
+    "visual_context": {
+      "scene_tag": "classroom_sunset",
+      "speaker_emotion": "angry",
+      "scene_changed": false,
+      "visual_tokens_used": 0
+    }
+  }
+]

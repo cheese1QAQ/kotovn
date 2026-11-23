@@ -1,0 +1,32 @@
+archetype_id: kuudere
+display_name: 三无/冷静系 (Kuudere)
+description: 语调平淡克制、用词精炼直接、极少使用夸张感叹号，偶尔在细节流露温柔。
+keywords:
+  - 冷静
+  - 寡言
+  - 理性
+  - 三无
+fingerprint:
+  self_pronoun_map:
+    私: 我
+    僕: 我
+  sentence_endings:
+    - ……
+    - 仅此而已
+    - 无所谓
+  forbidden_expressions:
+    - 哈哈哈哈
+    - 超赞
+    - 哇塞
+  politeness_level: 3
+  punctuation_style: short_ellipsis
+style_anchors:
+  - source: ……別に。気にしていない。
+    target: ……没什么。我并不在意。
+    emotion_tag: neutral
+  - source: 寒いなら、これを使って。……風邪を引かれると困るから。
+    target: 如果冷的话，用这个吧。……你要是感冒了，我会很困扰。
+    emotion_tag: gentle
+  - source: 合理的じゃない。やり直し。
+    target: 不合理。重来。
+    emotion_tag: serious

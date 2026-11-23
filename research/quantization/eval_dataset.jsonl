@@ -1,0 +1,5 @@
+{"id": "vn-001", "category": "tsundere_glossary", "speaker": "千夏", "archetype": "tsundere", "emotion": "blushing", "glossary": {"桜ヶ丘学園": "樱丘学园", "星屑部": "星屑社"}, "source": "べ、別に桜ヶ丘学園の「星屑部」に誘いたいわけじゃないんだからね！", "reference": "才、才不是想邀请你加入樱丘学园的“星屑社”呢！"}
+{"id": "vn-002", "category": "ojou_keigo", "speaker": "白雪", "archetype": "ojou_sama", "emotion": "neutral", "glossary": {"生徒会": "学生会"}, "source": "ごきげんよう。わたくし、生徒会の会議がございますので失礼いたしますわ。", "reference": "贵安。我还有学生会的会议，就先失陪了哦。"}
+{"id": "vn-003", "category": "kuudere_omitted_subject", "speaker": "零", "archetype": "kuudere", "emotion": "gentle", "glossary": {"観測塔": "观测塔"}, "source": "……寒い。観測塔に行くなら、上着を持っていくべき。", "reference": "……好冷。要去观测塔的话，最好带上外套。"}
+{"id": "vn-004", "category": "pronoun_shift", "speaker": "千夏", "archetype": "tsundere", "emotion": "angry", "glossary": {"悠真": "悠真"}, "source": "ちょっと悠真！　あんた、また部室で寝てたの！？", "reference": "喂，悠真！你这家伙，又在社团活动室睡着了吗！？"}
+{"id": "vn-005", "category": "worldbuilding_term", "speaker": "白雪", "archetype": "ojou_sama", "emotion": "serious", "glossary": {"蒼穹の契約": "苍穹之契", "星詠み": "观星者"}, "source": "「蒼穹の契約」を継ぐ星詠みとして、わたくしは逃げたりいたしませんわ。", "reference": "作为继承“苍穹之契”的观星者，我是绝不会逃避的哦。"}
